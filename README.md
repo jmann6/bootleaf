@@ -13,6 +13,7 @@ http://bmcbride.github.io/bootleaf/
 * Elegant client-side multi-layer feature search with autocomplete using [typeahead.js](http://twitter.github.io/typeahead.js/)
 * Responsive sidebar feature list with sorting and filtering via [list.js](http://listjs.com/)
 * Marker icons included in grouped layer control via the [grouped layer control plugin](https://github.com/ismyrnow/Leaflet.groupedlayercontrol)
+* Bootstrap 3 Glyphicons added via [Leaflet.awesome-markers](https://github.com/lvoogdt/Leaflet.awesome-markers)
 
 ### Screenshots:
 
