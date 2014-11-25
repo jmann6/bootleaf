@@ -4,7 +4,7 @@ BootLeaf + Awesome-markers
 A simple, responsive template for building web mapping applications with [Bootstrap](http://getbootstrap.com/), [Leaflet](http://leafletjs.com/), [typeahead.js](http://twitter.github.io/typeahead.js/), and [Leaflet.awesome-markers](https://github.com/lvoogdt/Leaflet.awesome-markers).
 
 ### Demo:
-http://bmcbride.github.io/bootleaf/
+http://jmann6.github.io/bootleafawesome
 
 ### Features:
 * Fullscreen mobile-friendly map template with responsive Navbar and modal placeholders
