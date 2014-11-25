@@ -8,15 +8,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>BootLeaf</title>
+    <title>Citadel Data</title>
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+<!-- <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">  -->  <!-- Replaced with mapbox -->
+    <link rel="stylesheet" href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css'>
     <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
     <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
     <link rel="stylesheet" href="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css">
     <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
+    <link rel="stylesheet" href="assets/css/leaflet.awesome-markers.css">
     <link rel="stylesheet" href="assets/css/app.css">
 
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon-76.png">
@@ -28,45 +31,47 @@
 
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <div class="navbar-icon-container">
-            <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
-            <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
-          </div>
-          <a class="navbar-brand" href="#">BootLeaf</a>
+      <div class="navbar-header">
+        <div class="navbar-icon-container">
+          <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+          <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
         </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>
-            <li class="dropdown">
-              <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
-                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Show Legend</a></li>
-                <li class="divider hidden-xs"></li>
-                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Boroughs</a></li>
-                  <li><a href="data/subways.geojson" download="subways.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Subway Lines</a></li>
-                  <li><a href="data/DOITT_THEATER_01_13SEPT2010.geojson" download="theaters.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Theaters</a></li>
-                  <li><a href="data/DOITT_MUSEUM_01_13SEPT2010.geojson" download="museums.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Museums</a></li>
-                </ul>
-            </li>
-            <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;POI List</a></li>
-          </ul>
-          <form class="navbar-form navbar-right" role="search">
-            <div class="form-group has-feedback">
-                <input id="searchbox" type="text" placeholder="Search" class="form-control">
-                <span id="searchicon" class="fa fa-search form-control-feedback"></span>
-            </div>
-          </form>
-        </div><!--/.navbar-collapse -->
+        <a class="navbar-brand" href="#">CAP Data Kaizen</a>
       </div>
+      <div class="navbar-collapse collapse">
+       <form class="navbar-form navbar-right" role="search">
+          <div class="form-group has-feedback navbar-right">
+              <input id="searchbox" type="text" placeholder="Search" class="form-control">
+              <span id="searchicon" class="fa fa-search form-control-feedback"></span>
+          </div>
+       </form>
+     
+        <ul class="nav navbar-nav">
+          <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-info-circle white"></i>&nbsp;&nbsp;About</a></li>
+          <li class="dropdown">
+            <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Show Legend</a></li>
+              <li class="divider hidden-xs"></li>
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-database white"></i>&nbsp;&nbsp;JSON Download <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="data/CustomersGeo.json" download="CustomersGeo.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;CAP Customers</a></li>
+                <li><a href="data/ObjCustomerNewBusiness.json" download="ObjCustomerNewBusiness.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;New Customers</a></li>
+                <li><a href="data/TerritoriesGeom.json" download="TerritoriesGeom.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Sales Territories</a></li>
+                <li><a href="data/vcgAirRoutes.json" download="vcgAirRoutes.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Air Routes</a></li>
+                <li><a href="data/GeoObjViewCustomersQuotesPending.json" download="GeoObjViewCustomersQuotesPending.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Quotes Pending</a></li>
+                <li><a href="data/GeoObjViewCustomersServiceFailures.json" download="GeoObjViewCustomersServiceFailures.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Service Failures</a></li>
+                <li><a href="data/GeoCustomerMarkerDescriptionBRRO.json" download="GeoCustomerMarkerDescriptionBRRO.json" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;BRRO pins</a></li>
+              </ul>
+          </li>
+          <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;List Search</a></li>
+        </ul>
+      </div><!--/.navbar-collapse -->
     </div>
 
     <div id="container">
@@ -74,14 +79,14 @@
         <div class="sidebar-wrapper">
           <div class="panel panel-default" id="features">
             <div class="panel-heading">
-              <h3 class="panel-title">Points of Interest
+              <h3 class="panel-title">CAP Customers
               <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button></h3>
             </div>
             <div class="panel-body">
               <p>
                 <div class="row">
                   <div class="col-xs-8 col-md-8">
-                    <input type="text" class="form-control search" placeholder="Filter" />
+                    <input type="text" class="form-control search" placeholder="Search..." />
                   </div>
                   <div class="col-xs-4 col-md-4">
                     <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn"><i class="fa fa-sort"></i>&nbsp;&nbsp;Sort</button>
@@ -130,13 +135,16 @@
               <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
               <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a></li>
               <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
+              <li><a href="#collapse" data-toggle="tab"><i class="fa fa-list"></i>&nbsp;Collapse.js</a></li>
+              <li><a href="#calendarTest" data-toggle="tab"><i class="fa fa-calendar"></i>&nbsp;Bootstrap-datetimepicker</a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;Metadata <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>&nbsp;More Data!<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#boroughs-tab" data-toggle="tab">Boroughs</a></li>
-                  <li><a href="#subway-lines-tab" data-toggle="tab">Subway Lines</a></li>
-                  <li><a href="#theaters-tab" data-toggle="tab">Theaters</a></li>
-                  <li><a href="#museums-tab" data-toggle="tab">Museums</a></li>
+                  <li><a href="#data-toggle1" data-toggle="tab">Torque Map of CAP customers</a></li>
+                  <li><a href="#data-toggle2" data-toggle="tab">Real-time Earthquake Data</a></li>
+                  <li><a href="#data-toggle3" data-toggle="tab">Oil Shale Map</a></li>
+                  <li><a href="#data-toggle4" data-toggle="tab">Packing Basics: Air Freight</a></li>
+                  <li><a href="#data-toggle5" data-toggle="tab">What Are Incoterms?</a></li>
                 </ul>
               </li>
             </ul>
@@ -152,12 +160,79 @@
                     <li class="list-group-item">Elegant client-side multi-layer feature search with autocomplete using <a href="http://twitter.github.io/typeahead.js/" target="_blank">typeahead.js</a></li>
                     <li class="list-group-item">Responsive sidebar feature list with sorting and filtering via <a href="http://listjs.com/" target="_blank">list.js</a></li>
                     <li class="list-group-item">Marker icons included in grouped layer control via the <a href="https://github.com/ismyrnow/Leaflet.groupedlayercontrol" target="_blank">grouped layer control plugin</a></li>
+                    <li class="list-group-item">Bootstrap glyphicon and font-awesome markers included via <a href="https://github.com/lvoogdt/Leaflet.awesome-markers" target="_blank">Leaflet.awesome-markers</a></li>
+                    <li class="list-group-item">Bower_components folder installed via <a href="http://bower.io/" target="_blank">Bower Package Manager</a></li>
+                    <li class="list-group-item">Moment.js and Underscore.js needed for <a href="https://github.com/Eonasdan/bootstrap-datetimepicker" target="_blank">Eonasan's bootstrap-datetimepicker.</a></li>
+                    <li class="list-group-item">Collapse.js is an accordion plugin included in <a href="http://getbootstrap.com/javascript/" target="_blank">Bootstrap.js.</a></li>
                   </ul>
                 </div>
               </div>
               <div id="disclaimer" class="tab-pane fade text-danger">
-                <p>The data provided on this site is for informational and planning purposes only.</p>
-                <p>Absolutely no accuracy or completeness guarantee is implied or intended. All information on this map is subject to such variations and corrections as might result from a complete title search and/or accurate field survey.</p>
+                <p>Trying out Bootstrap and mapbox.js.</p>
+                <p>Data is stub data from JSON files shown in navigation bar.</p>
+              </div>
+              <div id="collapse" class="tab-pane fade text-success">
+                  <div class="panel-group" id="accordion">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <h4 class="panel-title">
+                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                      Collapsible Group Item #1
+                                  </a>
+                              </h4>
+                          </div>
+                          <div id="collapseOne" class="panel-collapse collapse in">
+                              <div class="panel-body">
+                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <h4 class="panel-title">
+                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                      Collapsible Group Item #2
+                                  </a>
+                              </h4>
+                          </div>
+                          <div id="collapseTwo" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                              <h4 class="panel-title">
+                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                      Collapsible Group Item #3
+                                  </a>
+                              </h4>
+                          </div>
+                          <div id="collapseThree" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="calendarTest" class="tab-pane fade">
+                  <div class="container">
+                      <div class="row">
+                          <div class='col-sm-6'>
+                              <div class="form-group">
+                                  <p>Eonasdan bootstrap-datetimepicker: <a href="https://github.com/Eonasdan/bootstrap-datetimepicker" target="_blank">Github link</a></p>
+                                  <div class='input-group date' id='datetimepicker1'>
+                                      <input type='text' class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
               </div>
               <div class="tab-pane fade" id="contact">
                 <form id="contact-form">
@@ -186,22 +261,33 @@
                           <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
                         </p>
                       </div>
+                      </div>
                     </div>
-                  </div>
                 </form>
               </div>
-              <div class="tab-pane fade" id="boroughs-tab">
-                <p>Borough data courtesy of <a href="http://www.nyc.gov/html/dcp/html/bytes/meta_dis_nyboroughwi.shtml" target="_blank">New York City Department of City Planning</a></p>
+              <div class="tab-pane fade" id="data-toggle1">
+              	<br><br>
+                  <iframe width='100%' height='520' frameborder='0' src='http://jasonhoward123.cartodb.com/viz/7cf5813a-eb47-11e3-b456-0e10bcd91c2b/embed_map' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
               </div>
-              <div class="tab-pane fade" id="subway-lines-tab">
-                <p><a href="http://spatialityblog.com/2010/07/08/mta-gis-data-update/#datalinks" target="_blank">MTA Subway data</a> courtesy of the <a href="http://www.urbanresearch.org/about/cur-components/cuny-mapping-service" target="_blank">CUNY Mapping Service at the Center for Urban Research</a></p>
+              <div class="tab-pane fade" id="data-toggle2">
+              	<br><br>
+                  <iframe width='100%' height='520' frameborder='0' src='http://jasonhoward123.cartodb.com/viz/fe69ffc0-46b9-11e4-af04-0e853d047bba/embed_map' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
               </div>
-              <div class="tab-pane fade" id="theaters-tab">
-                <p>Theater data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Theaters/kdu2-865w" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
-              </div>
-              <div class="tab-pane fade" id="museums-tab">
-                <p>Museum data courtesy of <a href="https://data.cityofnewyork.us/Recreation/Museums-and-Galleries/sat5-adpb" target="_blank">NYC Department of Information & Telecommunications (DoITT)</a></p>
-              </div>
+               <div class="tab-pane fade" id="data-toggle3">
+                   <p>Map of every oil well in the United States: <a href="http://a.tiles.mapbox.com/v3/postcarbon.map-hlvm5dq5/page.html#5/38.976/-99.536" target="_blank">Oil Shale Map</a></p>
+               </div>
+                <div class="tab-pane fade" id="data-toggle4">
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/Dtt4F3GcCFg"></iframe>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="data-toggle5">
+                    <!-- 16:9 aspect ratio -->
+                     <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/zf3UUFcBhxQ"></iframe>
+                     </div>
+                </div>
             </div>
           </div>
           <div class="modal-footer">
@@ -219,7 +305,15 @@
             <h4 class="modal-title">Map Legend</h4>
           </div>
           <div class="modal-body">
-            <p>Map Legend goes here...</p>
+                <img width="20" height="22" src="assets/img/CAP_Icon_dark.png">&nbsp;&nbsp;CAP Customers
+            <br><br>
+                    <span class="glyphicon glyphicon-flag"></span>&nbsp;&nbsp;New Customers
+              <br><br>
+                    <span class="glyphicon glyphicon-exclamation-sign"></span> &nbsp;&nbsp;Services Failures
+              <br><br>
+                    <span class='glyphicon glyphicon-comment'></span> &nbsp;&nbsp;Quotes Pending
+              <br><br>
+                    <span class='glyphicon glyphicon-map-marker'></span>&nbsp;&nbsp;BRRO Pins
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -266,7 +360,9 @@
           </div>
           <div class="modal-body" id="feature-info"></div>
           <div class="modal-footer">
+              <div class="row">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -278,7 +374,7 @@
           <div class="modal-header">
             <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">
-              Developed by <a href='http://bryanmcbride.com'>bryanmcbride.com</a>
+              Developed by Nuss Professional Services</a>
             </h4>
           </div>
           <div class="modal-body">
@@ -289,14 +385,28 @@
     </div><!-- /.modal -->
 
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.5/typeahead.bundle.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
-    <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <!--  <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>  -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
     <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"></script>
     <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.0/leaflet-heat.js'></script>
     <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
+    <script src="assets/js/leaflet.awesome-markers.js"></script>
     <script src="assets/js/app.js"></script>
+
+    <!-- Eonasdan bootstrap-datetimepicker: https://github.com/Eonasdan/bootstrap-datetimepicker/wiki/Installation -->
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
+
+
   </body>
 </html>
