@@ -668,16 +668,14 @@ var baseLayers = {
 var groupedOverlays;
 groupedOverlays = {
     "Points of Interest": {
-        "<img src='assets/img/CAP_Icon_dark.png' width='20' height='22'>&nbsp;CAP Customers": customerLayer,
-        "<span class='glyphicon glyphicon-flag'></span>&nbsp;New Customers": newCustomerLayer,
-        "<span class='glyphicon glyphicon-comment'></span>&nbsp;Quotes Pending": quotesLayer,
-        "<span class='glyphicon glyphicon-exclamation-sign'></span>&nbsp;Service Failures": serviceFailureLayer,
-        "<span class='glyphicon glyphicon-map-marker'></span>&nbsp;BRRO Pins": brroPinsLayer
+        "<img src='assets/img/CAP_Icon_dark.png' width='20' height='22'>&nbsp;Surface Wells": customerLayer,
+        "<span class='glyphicon glyphicon-flag'></span>&nbsp;Oil Permits": newCustomerLayer,
+        "<span class='glyphicon glyphicon-comment'></span>&nbsp;Pending": quotesLayer
      //   "<i class='fa fa-warning'></i>&nbsp;Service Failures": serviceFailureLayer
     },
     "Reference": {
-        "Sales Territories": salesTerritory,
-        "Air Routes": airRoutes,
+        "Bald Eagle Winter Concentration": salesTerritory,
+        "Elk Winter Concentration": airRoutes,
         "Precipitation": precipitation,
         "Temperature": temperature
     }
